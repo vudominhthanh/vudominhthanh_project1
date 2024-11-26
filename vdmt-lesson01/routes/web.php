@@ -35,6 +35,9 @@ Route::get('/happy/{id}', function ($id) {
     return '<h1> Happy '.$id;
 });
 
+
+
+
 Route::get('/posts/{post}/comments/{comment}', function ($postID, $commentID) { 
     return "<h1>Posts: $postID; Comments: $commentID</h1>"; 
 });
@@ -42,6 +45,8 @@ Route::get('/posts/{post}/comments/{comment}', function ($postID, $commentID) {
 Route::get('/posts/{post}/comments/{comment}', function ($postID, $commentID) { 
     return "<h1>Posts: $postID; Comments: $commentID</h1>"; 
 });
+
+
 
 use Illuminate\http\Request;
 
@@ -69,9 +74,15 @@ Route::get('/user-check/{id}{name}', function ($id,$name) {
     return "<h1> Welcome [$id, $name]";
 }) ->whereNumber('id')->whereAlpha('name');
 
+
+
+
 Route::get('/search/{search?}', function ($search) {
     return "Tham so tren : $search";
 }) ->where(['id' => '[0-9]+' , 'name' => '[a-z]+']);
+
+
+
 
 use App\Http\Controllers\VdmtController;
 
@@ -79,8 +90,19 @@ Route::get('/named/display', [vdmtcontroller::class, 'display']) ->name('display
 
 Route::get('/named/show', [vdmtcontroller::class, 'show']);
 
+
+
+
 Route::group(['prefix'=>'admin'],function () {
     Route::get('/', function () {return "<h1> Welcome admin home ";});
     Route::get('/account', function () {return "<h1> Welcome admin account ";});
     Route::get('/product', function () {return "<h1> Welcome admin product ";});
 });
+
+Route::get('/account', [accountcontroller::class,'index']);
+
+Route::get('/account-create',[accountcontroller::class,'create'])->name('account.create');
+
+Route::get('/account-show',[accountcontroller::class,'showdata'])->name('account.show');
+
+Route::get('/account-list',[accountcontroller::class,'list'])->name('account.list');

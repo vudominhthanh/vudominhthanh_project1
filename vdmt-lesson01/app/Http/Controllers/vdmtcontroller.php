@@ -14,3 +14,4 @@ class VdmtController extends Controller
         return redirect()->route('display.profile');
     }
 }
+
