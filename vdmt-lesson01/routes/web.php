@@ -99,6 +99,9 @@ Route::group(['prefix'=>'admin'],function () {
     Route::get('/product', function () {return "<h1> Welcome admin product ";});
 });
 
+
+use App\Http\Controllers\accountcontroller; 
+
 Route::get('/account', [accountcontroller::class,'index']);
 
 Route::get('/account-create',[accountcontroller::class,'create'])->name('account.create');

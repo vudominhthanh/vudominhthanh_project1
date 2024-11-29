@@ -19,9 +19,10 @@ class accountcontroller extends Controller
         $data = array('123456789','devmaster');
         return view('account-show',compact('data'));
     }
-    public function list() {
+    public function list() 
+    {
         $data = array (["id"=>1,"username"=>"nahida","password"=>"nahida123","fullname"=>"nahidaa"],
                        ["id"=>2,"username"=>"nahida","password"=>"nahida123","fullname"=>"nahidaa"]);
-        return view('account-list',compact('data'));
+        return view('account-list',['list'=>$data]);
     }
 }
