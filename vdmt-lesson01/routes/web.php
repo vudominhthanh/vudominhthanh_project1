@@ -84,7 +84,7 @@ Route::get('/search/{search?}', function ($search) {
 
 
 
-use App\Http\Controllers\VdmtController;
+use App\Http\Controllers\VdmtController;    
 
 Route::get('/named/display', [vdmtcontroller::class, 'display']) ->name('display.profile');
 
