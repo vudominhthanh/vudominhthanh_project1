@@ -1,0 +1,19 @@
+header {
+    height: 300px;
+    width: 100%;
+    background-color: blue;
+}
+
+header .mainhead {
+    display: flex;
+    justify-content: center;
+}
+/* header .logo {
+    
+}s
+header .search {
+    display: flex 1;
+}
+header .inform {
+    display: flex 1;
+} */

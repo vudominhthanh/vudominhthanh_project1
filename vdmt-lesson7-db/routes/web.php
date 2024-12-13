@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,15 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user',function (Request $request) 
-{
-    
-});
+use App\Http\Controllers\dbcontroller;
 
-Route::get('/login',function (Request $request) 
-{
-    return view('vdmt-vw-login');
-})->name("login.submit");
-
-
-    
+Route::get('/khoa',[dbcontroller::class,'datalist'])->name('khoa.datalist');

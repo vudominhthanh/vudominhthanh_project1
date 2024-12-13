@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user',function (Request $request) 
-{
-    
+Route::get('/search', 'SearchController@index')->name('search');
+
+
+
+Route::get('/home',function(){
+    return view('homemain');
 });
 
-Route::get('/login',function (Request $request) 
-{
-    return view('vdmt-vw-login');
-})->name("login.submit");
+Route::get('/head',function(){
+    return view('_layouts.header');
+});
 
+Route::get('/nav',function(){
+    return view('_layouts.navbar');
+});
 
-    
+Route::get('/foot',function(){
+    return view('_layouts.footer');
+});
+
+Route::get('/master',function(){
+    return view('_layouts.master');
+});

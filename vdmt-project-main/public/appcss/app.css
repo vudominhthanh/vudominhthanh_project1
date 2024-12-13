@@ -1,0 +1,19 @@
+header {
+    height: 200px;
+    width: 100%;
+    background-color: lightgray;
+}
+header .mainhead {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header .logo {
+    display: flex 1;
+}
+header .search {
+    display: flex 1;
+}
+header .inform {
+    display: flex 1;
+}
