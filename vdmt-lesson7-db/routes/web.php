@@ -20,3 +20,9 @@ Route::get('/', function () {
 use App\Http\Controllers\dbcontroller;
 
 Route::get('/khoa',[dbcontroller::class,'datalist'])->name('khoa.datalist');
+
+Route::get('/khoa/detail/{makhoa}',[dbcontroller::class,'detail'])->name('khoa.detail');
+
+Route::get('/khoa/create',[dbcontroller::class,'create'])->name('khoa.create');
+
+Route::post('/khoa/create',[dbcontroller::class,'createsubmit'])->name('khoa.createsubmit');

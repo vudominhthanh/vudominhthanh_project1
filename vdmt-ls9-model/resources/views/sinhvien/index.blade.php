@@ -44,23 +44,23 @@
                     @php
                         $stt=0;
                     @endphp
-                    @foreach ($sinhViens as $item)
+                    @foreach ($sv as $item)
                         @php
                             $stt++;
                         @endphp
                         <tr>
                             <th class="text-center">{{$stt}}</th>
-                            <td>{{$item->MaSV}}</td>
-                            <td>{{$item->HoSV}} {{$item->TenSV}}</td>
-                            <td>{{$item->Phai}}</td>
-                            <td>{{$item->NgaySinh}}</td>
-                            <td>{{$item->NoiSinh}}</td>
-                            <td>{{$item->MaKH}}</td>
-                            <td>{{$item->HocBong}}</td>
+                            <td>{{$item->masv}}</td>
+                            <td>{{$item->hosv}} {{$item->tensv}}</td>
+                            <td>{{$item->phai}}</td>
+                            <td>{{$item->ngaysinh}}</td>
+                            <td>{{$item->noisinh}}</td>
+                            <td>{{$item->makhoa}}</td>
+                            <td>{{$item->hocbong}}</td>
                             <td class="text-center">
-                                <a href="/sinhvien/detail/{{$item->MaSV}}" class="btn btn-success"> Chi tiết</a>
-                                <a href="/sinhvien/edit/{{$item->MaSV}}" class="btn btn-primary"> Sửa</a>
-                                <a href="/sinhvien/delete/{{$item->MaSV}}" class="btn btn-danger" onclick="return confirm('Bạn muốn xóa sinh viên này không? Mã:' + {{$item->MaSV}});"></a>
+                                <a href="/sinhvien/detail/{{$item->masv}}" class="btn btn-success"> Chi tiết</a>
+                                <a href="/sinhvien/edit/{{$item->masv}}" class="btn btn-primary"> Sửa</a>
+                                <a href="/sinhvien/delete/{{$item->masv}}" class="btn btn-danger" onclick="return confirm('Bạn muốn xóa sinh viên này không? Mã:' + {{$item->MaSV}});"></a>
                             </td>
                         </tr>
                     @endforeach
@@ -68,7 +68,7 @@
                 </table>
             </div>
             <div class="card-footer">
-                <h3>Tổng số: {{$sinhViens->count()}}</h3>
+                <h3>Tổng số: {{$sv->count()}}</h3>
                 <a href="/sinhvien/create" class="btn btn-primary">Thêm mới</a>
             </div>
         </div>

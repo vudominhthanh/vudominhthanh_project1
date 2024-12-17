@@ -23,7 +23,7 @@
                 @php
                     $stt=0;
                 @endphp
-                @foreach ($khoa as $item)
+                @foreach ($khoas as $item)
                     @php
                     $stt++;
                     @endphp
@@ -31,12 +31,19 @@
                         <th>{{$stt}}</th>
                         <td>{{$item->makhoa}}</td>
                         <td>{{$item->tenkhoa}}</td>
-                        <td>
-                        edit / delete
+                        <td class="text-center">
+                            <a href="/khoa/detail/{{$item->makhoa}}" class="btn btn-success">Chi tiết</a>
+                            <a href="/khoa/edit/{{$item->makhoa}}" class="btn btn-primary">Sửa</a>
+                            <a href="/khoa/delete/{{$item->makhoa}}" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <td colspan="4">
+                    <a href="/khoa/create" class="btn btn-light">Them moi</a>
+                </td>
+            </tfoot>
         </table>
     </section>
 </body>

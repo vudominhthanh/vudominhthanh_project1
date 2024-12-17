@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class modelcontrol extends Controller
 {
     public function index() {
-        $sv = qlsv::all();
+        $sv = tblsv::all();
         return view('sinhvien.index',['sv'=>$sv]);
     }
 }

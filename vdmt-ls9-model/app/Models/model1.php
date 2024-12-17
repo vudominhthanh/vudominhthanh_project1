@@ -9,5 +9,5 @@ class model1 extends Model
 {
     use HasFactory;
 
-    protected $table = 'qlsv';
+    protected $table = 'tblsv';
 }
