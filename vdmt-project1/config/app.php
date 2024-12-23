@@ -112,7 +112,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Encryption Key    
+    | Encryption Key
     |--------------------------------------------------------------------------
     |
     | This key is used by the Illuminate encrypter service and should be set
@@ -194,8 +194,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        KitLoong\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
-
 
     ],
 

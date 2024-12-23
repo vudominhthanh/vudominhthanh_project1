@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 0;
+}
+div {
+    margin: 0;
+    padding: 0;
+}
+.admininform {
+    height: 100px;
+    background-color: darkgray;
+    line-height: 100px;
+    border-bottom: white solid 1px;
+    padding: 0 5px 0 10px;
+    margin: 0;
+}
+article .admininform img {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+article .admininform .nameadmin {
+    display: inline-block;
+    font-size: 14px;
+    color: white;
+}
+article .menu {
+    background-color: darkgray;
+    list-style: none;
+    text-decoration: none;
+    height: 500px;
+    padding: 0 5px 0 10px;
+    margin: 0;
+}
+article .menu ul {
+    padding: 5px;
+    list-style-type: none;
+}
+article .menu li {
+    border: 1 solid darkgray;
+    padding: 5px 0px 5px 0px;
+    margin: 2px;
+}
+article .menu li:hover {
+    border: 1px darkgray solid;
+    border-radius: 10px;
+    margin: 1px;
+}
+article .menu a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 0 5px 0 5px;   
+}   
+
+
