@@ -24,7 +24,7 @@
                 <input type="radio" name="vdmttypeproductstatus" id="vdmttypeproductstatus" value="0" >
                 <label for="status">Khoa</label>
             </div>
-    </div>
+    </div>  
     <div class="card-footer">
         <button class="btn btn-success">Ghi lai</button>
         <a href="{{route('admin.list-type-product')}}" class="btn btn-secondary">Quay lai</a>

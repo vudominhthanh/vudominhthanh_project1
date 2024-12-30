@@ -7,15 +7,15 @@
 @csrf    
 <input type="hidden" name="id" id="id"  value="{{$vdmttypeproducts->id}}">
     <div>
-        <label for="id">Ma loai</label>
+        <label for="vdmttypeproductid">Ma loai</label>
         <input type="text" name="vdmttypeproductid" id="vdmttypeproductid" value="{{$vdmttypeproducts->vdmttypeproductid}}">
     </div>
     <div>
-        <label for="name">Ten loai</label>
+        <label for="vdmttypeproductname">Ten loai</label>
         <input type="text" name="vdmttypeproductname" id="vdmttypeproductname" value="{{$vdmttypeproducts->vdmttypeproductname}}">
     </div>
     <div>
-        <label for="status">Trang thai</label>
+        <label for="vdmttypeproductstatus">Trang thai</label>
         @if ($vdmttypeproducts->vdmttypeproductstatus === 1 )
             <div class="col-sm-10">
                 <input type="radio" name="vdmttypeproductstatus" id="vdmttypeproductstatus" value="1" checked>

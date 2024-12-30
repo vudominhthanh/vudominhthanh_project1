@@ -5,7 +5,7 @@
     <div class="car">
         <div class="card-header d-flex">
             <h3>Products type</h3>
-            <a href="/home/admin/list-type-product/create" class="btn btn-success d-inline-block m-1">Them moi</a>
+            <a href="/home/admin/list-type-product/create" class="btn btn-success d-inline-block m-1">Them moi </a>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
