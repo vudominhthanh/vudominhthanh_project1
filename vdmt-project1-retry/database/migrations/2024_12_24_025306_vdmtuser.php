@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('vdmtuser',function(Blueprint $table) {
             $table->id();
             $table->string('vdmtusername',255)->unique();
-            $table->string('vdmtpassword',255);
+            $table->string('vdmtpassword',255); 
+            $table->boolean('is_admin')->default(0);
             $table->tinyInteger('vdmtstatus');
             $table->timestamps();
         });
@@ -26,5 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('vdmtuser');
+        $table->dropColumn('is_admin');
     }
 };

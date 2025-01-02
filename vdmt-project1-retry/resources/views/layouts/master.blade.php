@@ -8,11 +8,75 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 <style>
+    body {
+        background-image: url('https://th.bing.com/th/id/OIP.bN5fzzBy3kIuljYqchOIPQHaEK?rs=1&pid=ImgDetMain');
+    }
     .sideBar {
         width: 250px;
     }
+    .list-group {
+        border-radius: 20px;
+    }
     .wrapper {
         width: calc(100% - 250px);
+    }
+    .wrapper header {
+        border-radius: 30px; 
+        background-color: rgb(239, 239, 239);
+    }
+    .wrapper section {
+        border-radius: 20px;
+        padding: 10px;
+        background-color: rgb(239, 239, 239);
+    }
+    .wrapper section ul li a{
+        list-style-type: none;
+        text-decoration: none;
+    }
+    .infor {
+        background-color: rgb(239, 239, 239);
+        height: 65px;
+        width: 100%;
+        border-radius: 40px;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+        display: flex; 
+        align-items: center;
+    }
+    .infor img {
+        border-radius: 25px;
+        height: 45px;
+        width: 45px;
+    }
+    .infor p {
+        line-height: 65px;
+        margin: 10px;
+    }
+    .search-bar { 
+        display: flex; 
+    } 
+    .search-bar input[type="text"] { 
+        padding: 8px 8px 8px 15px;
+        width: 25%;
+        margin: 10px; 
+        font-size: 16px; 
+        border: 1px solid #ccc; 
+        border-radius: 20px 0 0 20px; 
+        outline: none; 
+    }
+    .search-bar button { 
+        padding: 8px 8px 8px 10px; 
+        width: 42px;
+        background-color: #28a745; 
+        color: white; 
+        border: 1px solid #28a745; 
+        border-radius: 0 20px 20px 0; 
+        cursor: pointer; 
+        margin:10px 10px 10px -10px;
+    } 
+    .search-bar button:hover { 
+        background-color: #218838;
     }
 </style>
 </head>

@@ -5,7 +5,7 @@
     <div class="car">
         <div class="card-header d-flex">
             <h3>Products</h3>
-            <a href="/home/admin/list-product/create" class="btn btn-success d-inline-block m-1">Them moi </a>
+            <a href="/admin/list-product/create" class="btn btn-success d-inline-block m-1">Them moi </a>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
@@ -38,8 +38,8 @@
                             <td>{{$item->created_at}}</td>
                             <td>{{$item->updated_at	}}</td>
                             <td>
-                                <a href="/home/admin/list-product/edit/{{$item->id}}" class="btn btn-primary">Edit</a>
-                                <a href="/home/admin/list-product/delete/{{$item->id}}" class="btn btn-danger"onclick="return confirm('Bạn muốn xóa không?');">Xóa </a>
+                                <a href="/admin/list-product/edit/{{$item->id}}" class="btn btn-primary">Edit</a>
+                                <a href="/admin/list-product/delete/{{$item->id}}" class="btn btn-danger"onclick="return confirm('Bạn muốn xóa không?');">Xóa </a>
                             </td>
                     @endforeach 
                 </tbody>
