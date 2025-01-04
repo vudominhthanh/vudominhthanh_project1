@@ -24,4 +24,7 @@ class vdmtproduct extends Model
             'vdmtproductstatus' => 'required|boolean', 
         ]);
     }
+    public function getVdmtproductimageAttribute($value) { 
+        return $value ? asset($value) : 'default_image_path'; 
+    }
 }

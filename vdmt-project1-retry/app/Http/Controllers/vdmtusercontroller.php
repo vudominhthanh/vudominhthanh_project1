@@ -3,34 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use \App\Http\Middleware\adminmiddleware;
 
 class vdmtusercontroller extends Controller
 {
-    public function vdmtlogin() {
-        if (Auth::check()) {
-            return redirect()->route('homeadmin');
-        }
-        return view('frontend.admin.login');
+    public function vdmtlogin() 
+    {
+        return view("frontend.admin.login");
     }
-    
     public function vdmtloginsubmit(Request $request) {
         $request->validate([
-            'vdmtusername' => 'required|email',
-            'password' => 'required|min:6',
+            "email" => "required",
+            "password" => "required",
         ]);
-    
-        $credentials = [
-            'vdmtusername' => $request->input('vdmtusername'),
-            'password' => $request->input('password'),
-        ];
-    
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            return redirect()->route('homeadmin');
+        $credentials = $request->only("email","password");
+        if(Auth::attempt($credentials)) {
+            return redirect()->intended(route('homeadmin'));
         }
-    
-        return redirect()->back()->with('err', 'Wrong email or password');
+        return redirect(route('adminlogin'))->with("error",'login failed');
     }
-          
+
+    public function register() 
+    {
+        return view("auth.register");
+    }
+    public function registerpost(Request $request) {
+        $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "password" => "required",
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        if($user->save()) {
+            return redirect(route("login"))->with('duccess','User');
+        }
+        return redirect(route('register'))->with("error","Failed");
+    }
+    public function vdmtlogout(Request $request) {
+         Auth::guard('web')->logout(); 
+         $request->session()->invalidate(); 
+         $request->session()->regenerateToken(); 
+         return redirect()->intended(route('adminlogin')); 
+    }
 }
+

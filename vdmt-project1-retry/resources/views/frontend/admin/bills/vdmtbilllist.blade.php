@@ -42,6 +42,7 @@
                             <td>
                                 <a href="/admin/bill/edit/{{$item->id}}" class="btn btn-primary">Edit</a>
                                 <a href="/admin/bill/delete/{{$item->id}}" class="btn btn-danger"onclick="return confirm('Bạn muốn xóa không?');">Xóa </a>
+                                <a href="/admin/bill/detail/{{$item->id}}"></a>
                     @endforeach 
                 </tbody>
             </table>

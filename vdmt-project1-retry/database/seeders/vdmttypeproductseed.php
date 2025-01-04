@@ -5,23 +5,30 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\vdmtuser;
+use Hash;
 
 class vdmttypeproductseed extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
-        DB::table('vdmttypeproduct')->insert([
-            'vdmttypeproductid' => "tp01",
-            'vdmttypeproductname' => "Loai test",
-            'vdmttypeproductstatus' => 1,
-        ]);
-        DB::table('vdmttypeproduct')->insert([
-            'vdmttypeproductid' => "tp02",
-            'vdmttypeproductname' => "Loai test 2",
-            'vdmttypeproductstatus' => 0,
+    
+    // public function run(): void
+    // {
+    //     $users = vdmtuser::all(); 
+    //     foreach ($users as $user) { 
+    //         $user->password = bcrypt($user->password); 
+    //         $user->save(); 
+    //     }
+    // }
+    public function run(){
+        DB::table('users')->insert([ 
+            'name' => 'Admin',
+            'email' => 'thanhvu@gmail.com', 
+            'password' => Hash::make('123456'),
         ]);
     }
+    
 }
+

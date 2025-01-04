@@ -7,7 +7,9 @@ use App\Http\Controllers\vdmtproductcontroller;
 use App\Http\Controllers\vdmtcustomercontroller;
 use App\Http\Controllers\vdmtbillcontroller;
 use App\Http\Controllers\homecontroller;
+use App\Http\Controllers\detailproductcontroller;
 use \App\Http\Middleware\adminmiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,12 @@ Route::get('/greeting', function () {
     return view('welcome');
 })->name('wel');
 // admin login
-Route::get('/login/admin',[vdmtusercontroller::class,'vdmtlogin'])->name('adminlogin');
-Route::post('/login/admin',[vdmtusercontroller::class,'vdmtloginsubmit'])->name('adminloginsubmit');
+Route::get('/admin/login',[vdmtusercontroller::class,'vdmtlogin'])->name('adminlogin');
+Route::post('/admin/login',[vdmtusercontroller::class,'vdmtloginsubmit'])->name('adminloginsubmit');
+Route::get('/admin/logout',[vdmtusercontroller::class, 'vdmtlogout'])->name('adminlogout');
 
-
-
-Route::prefix('admin')->middleware('admin')->group(function() {
+// 
+Route::prefix('admin')->middleware('auth')->group(function() {
     // home admin  
     Route::get('/', function () { return view('frontend.admin.homeadmin'); })->name('homeadmin');
 
@@ -40,7 +42,7 @@ Route::prefix('admin')->middleware('admin')->group(function() {
     Route::post(' /list-type-product',[vdmttypeproductcontroller::class,'vdmtcreatesubmit'])->name('admin.createsubmit');
     //type product edit
     Route::get('/list-type-product/edit/{id}',[vdmttypeproductcontroller::class,'vdmttypeedit'])->name('admin.list-type-product.edit');
-    Route::post(' /list-type-product/edit',[vdmttypeproductcontroller::class,'vdmttypeeditsubmit'])->name('admin.list-type-product.editsubmit');
+    Route::post('/list-type-product/edit',[vdmttypeproductcontroller::class,'vdmttypeeditsubmit'])->name('admin.list-type-product.editsubmit');
     //type product delete
     Route::get('/list-type-product/delete/{id}',[vdmttypeproductcontroller::class,'vdmtdelete'])->name('admin.list-type-product.delete');
 
@@ -80,6 +82,12 @@ Route::prefix('admin')->middleware('admin')->group(function() {
     Route::post('/bill/edit',[vdmtbillcontroller::class,'vdmtbilleditsubmit'])->name('admin.list-bill.editsubmit');
     //billbill delete
     Route::get('/bill/delete/{id}',[vdmtbillcontroller::class,'vdmtbilldelete'])->name('admin.bill-list.delete'); 
+    //get cus
+    Route::get('/customers/{id}', [vdmtcustake::class, 'getCustomer'])->name('admin.get-customer');
+
+    //bill details
+    Route::get('/bill/detail/{vdmtbillid}', [vdmtbillcontroller::class, 'vdmtbilldetail'])->name('admin.bill.details');
+
 });
 
 
@@ -88,3 +96,20 @@ Route::prefix('admin')->middleware('admin')->group(function() {
 Route::get('/home',[homecontroller::class,'home'])->name('home');
 //Home type1
 Route::get('/home/{vdmttypeproductid}',[homecontroller::class,'hometype'])->name('hometype');
+//Product details
+Route::get('/details/{id}',[homecontroller::class,'homedetail'])->name('homedetail');
+//   /{vdmtproductid}
+
+// cus login
+Route::get('/cus/login',[vdmtcustomercontroller::class,'vdmtlogin'])->name('cuslogin');
+Route::post('/cus/login',[vdmtcustomercontroller::class,'vdmtloginsubmit'])->name('cusloginsubmit');
+Route::post('/cus/logout',[vdmtcustomercontroller::class, 'vdmtlogout'])->name('cuslogout');
+
+Route::get('/cus/register',[vdmtcustomercontroller::class,'vdmtregister'])->name('cusregister');
+Route::post('/cus/register',[vdmtcustomercontroller::class,'vdmtregistersubmit'])->name('cusregistersubmit');
+Route::post('/cus/register',[vdmtcustomercontroller::class,'vdmtregistersubmit'])->name('cusregistersubmit');
+
+
+Route::middleware('auth.customer')->group(function() {
+    //shopping cart
+});

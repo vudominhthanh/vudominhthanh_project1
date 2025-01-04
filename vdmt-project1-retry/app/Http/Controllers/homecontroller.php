@@ -19,4 +19,10 @@ class homecontroller extends Controller
         $vdmtproducts = vdmtproduct::where('vdmttypeproductid', $vdmttypeproductid)->get(); 
         return view('homes.home',['vdmtproducts'=> $vdmtproducts,'vdmttypeproducts'=> $vdmttypeproducts]);
     }
+    public function homedetail($id) {
+        $vdmtproducts = vdmtproduct::findOrFail($id);
+        $vdmttypeproducts = vdmttypeproduct::all();
+        return view('homes.productdetail',['vdmttypeproducts'=> $vdmttypeproducts,'vdmtproducts'=> $vdmtproducts]);
+    }
+    
 }

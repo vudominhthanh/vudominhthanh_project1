@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\vdmtcustomer;
 use Illuminate\Support\Facades\DB;  
+use Illuminate\Support\Facades\Hash;  
+use Illuminate\Support\Facades\Auth;  
 
 class vdmtcustomercontroller extends Controller
 {
+    
     public function vdmtcustomerlist() {
         $vdmtcustomers = vdmtcustomer::all();
         return view('frontend.admin.customers.vdmtlistcustomer',['vdmtcustomers'=>$vdmtcustomers]);
@@ -48,5 +51,54 @@ class vdmtcustomercontroller extends Controller
     {
         $vdmtcustomers = DB::delete('delete from vdmtcustomer where id =?',[$id]);
         return redirect()->route('admin.list-customer');
+    }
+
+    //login and sign
+    // public function __construct() { 
+    //     $this->middleware('auth.customer')->only('vdmtlogin','vdmtloginsubmit');
+    // }
+    public function vdmtlogin() 
+    {
+        return view("homes.login");
+    }
+    public function vdmtloginsubmit(Request $request) {
+        $request->validate([ 
+            'vdmtcusemail' => 'required', 
+            'vdmtcuspassword' => 'required|min:6',  
+        ]);
+        // $credentials = $request->only("vdmtcusemail","vdmtcuspassword");
+        $credentials = [ 
+            'vdmtcusemail' => $request->vdmtcusemail, 
+            'password' => $request->vdmtcuspassword ,
+        ];
+        if(Auth::guard('customer')->attempt($credentials)) {
+            return redirect()->intended(route('home'));
+        }
+        return redirect(route('cuslogin'))->with("error",'Login failed');
+    }
+
+    public function vdmtregister() 
+    {
+        return view("homes.register");
+    }
+    public function vdmtregistersubmit(Request $request) {
+        $request->validate([
+            'vdmtcusid' => 'required|max:12', 
+            'vdmtcusname' => 'required', 
+            'vdmtcusemail' => 'required', 
+            'vdmtcuspassword' => 'required|min:6', 
+        ]);
+
+        $user = new vdmtcustomer();
+        $user->vdmtcusid = $request->vdmtcusid;
+        $user->vdmtcusname = $request->vdmtcusname;
+        $user->vdmtcusemail = $request->vdmtcusemail;
+        $user->vdmtcuspassword = Hash::make($request->vdmtcuspassword);
+        $user->vdmtcusnumber = $request->vdmtcusnumber;
+        $user->vdmtcusaddress = $request->vdmtcusaddress;
+        if($user->save()) {
+            return redirect(route("cuslogin"))->with('Success','User create success');
+        }
+        return redirect(route('cusregister'))->with("error","Failed");
     }
 }
